@@ -7,15 +7,15 @@ Capítulo 1 - Iniciando
 Comenzando con Odoo
 ===================
 
-Antes de sumergirse en el desarrollo de Odoo, es necesario configurar el
-entorno de desarrollo, y para esto se debe aprender las tareas básicas
+Antes de sumergirse en el desarrollo de Odoo es necesario configurar el
+entorno de desarrollo y, para esto, se deben aprender las tareas básicas
 de administración.
 
-En este capítulo, se aprenderá como configurar el entorno de desarrollo,
+En este capítulo, se aprenderá cómo configurar el entorno de desarrollo,
 donde luego se desarrollarán las aplicaciones Odoo.
 
 Se aprenderá a configurar sistemas Debian o Ubuntu para alojar las
-instancias del servidor de desarrollo, y como instalar Odoo desde el
+instancias del servidor de desarrollo y cómo instalar Odoo desde el
 código fuente en GitHub. Luego aprenderá a configurar archivos
 compartidos con Samba, permitiendo trabajar con archivos de Odoo desde
 una estación de trabajo con cualquier sistema operativo.
@@ -24,35 +24,35 @@ Odoo está desarrollado usando el lenguaje de programación Python y usa
 PostgreSQL como base de datos para almacenar datos, estos son los
 requisitos principales para trabajar con Odoo. Para ejecutar Odoo desde
 el código fuente, es necesario instalar las librerías Python de las
-cuales depende. Luego el código fuente de Odoo debe descargarse desde
-GitHub y ejecutado desde el código fuente. Aunque es posible descargar
+que depende. Luego el código fuente de Odoo debe descargarse desde
+GitHub y ser ejecutado desde el código fuente. Aunque es posible descargar
 un zip o tarball, es mejor obtener el código fuente usando GitHub, así
 además tendremos Odoo instalado en nuestro equipo.
 
 Configurar un equipo como servidor Odoo
 ---------------------------------------
 
-Preferimos usar sistemas Debian/Ubuntu para el servidor Odoo, aunque
+Preferimos usar sistemas Debian/Ubuntu para el servidor Odoo, aunque se
 puede trabajar desde el sistema operativo de su preferencia, sea
-Windows, Macintosh, o Linux.
+Windows, Macintosh o Linux.
 
-Odoo puede ser ejecutado en una gran variedad de sistemas operativos,
-entonces ¿por qué elegir Debian por encima de otros sistemas operativos?
+Odoo se puede ejecutar en una gran variedad de sistemas operativos;
+entonces, ¿por qué elegir Debian por encima de otros sistemas operativos?
 Debido a que Odoo es desarrollado principalmente para sistemas
-Debian/Ubuntu, el soporte para Odoo es mejor. Por lo tanto será más
+Debian/Ubuntu su soporte es mejor. Por lo tanto será más
 fácil encontrar ayuda y recursos adicionales si se trabaja con
-Debian/Ubuntu.
+estos sistemas operativos.
 
 También son las plataformas más usadas por las personas que desarrollan
-aplicaciones, y donde se dan a conocer más implementaciones. Por esta
-razón, inevitablemente, se espera que las desarrolladoras y los
-desarrolladores de Odoo se sientan a gusto con esta plataforma. Incluso
-quienes tiene una historial de trabajo con Windows, es importante que
+aplicaciones y donde se dan a conocer más implementaciones. Por esta
+razón, inevitablemente, se espera que la comunidad de desarrolladores
+de Odoo se sientan a gusto con esta plataforma. Incluso para
+quienes tienen un historial de trabajo con Windows, es importante que
 tengan algún conocimiento sobre estas plataformas.
 
 En este capítulo, se aprenderá a configurar y trabajar con Odoo sobre un
 sistema Debian, usando únicamente la línea de comandos. Para quienes
-están acostumbrados a sistemas Windows, se describirá como configurar
+están acostumbrados a sistemas Windows, se describirá cómo configurar
 una máquina virtual para alojar un servidor Odoo. Adicionalmente, las
 técnicas aprendidas servirán para gestionar servidores Odoo en la nube
 donde el único acceso será a través de una **Shell Segura (SSH).**
@@ -61,7 +61,7 @@ donde el único acceso será a través de una **Shell Segura (SSH).**
     Tenga en cuenta que estas instrucciones tienen como objetivo
     configurar un nuevo sistema para desarrollo. Si desea probarlas en
     un sistema existente, haga un respaldo a tiempo que le permita
-    recuperar el sistema en caso de algún problema.
+    recuperar el sistema en caso de se produzca algún problema.
 
 Disposiciones para un equipo Debian
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -73,36 +73,36 @@ Debian, por lo tanto son muy similares.
 
 .. note::
     Odoo asegura su funcionamiento con la versión estable de Debian o
-    Ubuntu. Al momento de elegir este libro, las versión estable para
+    Ubuntu. Al momento de elegir este libro, la versión estable para
     Debian es la versión 7 "Wheezy" y para Ubuntu la versión 14.04
     "Trusty Tahr". Ambas se distribuyen con Python 2.7, necesario para
     ejecutar Odoo.
 
 Si ya está ejecutando Ubuntu u otra distribución basada en Debian, todo
-esta listo para comenzar; ésta máquina también puede ser usada para
+está listo para comenzar; esta máquina también puede ser usada para
 alojar Odoo.
 
 Para los sistemas operativos Windows y Macintosh, es posible tener
-Python, PostgreSQL, y todas las dependencias instaladas, y luego
+Python, PostgreSQL y todas las dependencias instaladas para luego
 ejecutar Odoo desde el código fuente de forma nativa.
 
 Sin embargo, esto puede ser un gran reto, por lo que nuestra
 recomendación es usar una máquina virtual ejecutando Debian o Ubuntu
 Server. Puede usar su software de virtualización preferido para hacer
-funcionar Debian en una máquina virtual. Si necesita alguna ayuda, aqui
-hay algunos consejos: en lo que se refiere a software de vistualización,
+funcionar Debian en una máquina virtual. Si necesita alguna ayuda, aquí
+hay algunos consejos: en lo que se refiere a software de virtualización
 tiene muchas opciones, como Microsoft Hyper-V (disponible para algunas
-versiones de Windows), Oracle VirtualBox, o VMWare Player (o VMWare
+versiones de Windows), Oracle VirtualBox o VMWare Player (o VMWare
 Fusion para Macintosh). VMWare Player es probablemente el más fácil de
-usar, y puede descargarse gratuitamente en
+usar y puede descargarse gratuitamente en
 https://my.vmware.com/web/vmware/downloads
 
 Con relación a la imagen Linux a usar, Ubuntu Server es más amigable
-para las usuarias y usuarios para instalar que Debian. Si esta
+para las usuarias y usuarios para instalar que Debian. Si está
 comenzando con Linux, es recomendable que use una distribución lista
-para usar. TurnKey Linux provee imágenes facil de usar, preinstaladas en
-distintos formatos, incluyendo ISO. El formato ISO funcionara con
-cualquier software de vistualización de su preferencia, o incluso en
+para usar. TurnKey Linux provee imágenes fáciles de usar, preinstaladas en
+distintos formatos, incluyendo ISO. El formato ISO funcionará con
+cualquier software de virtualización de su preferencia o incluso en
 cualquier equipo actual. Una buena opción sería una imagen LAPP, que
 puede hallarse en http://www.turnkeylinux.org/lapp.
 
@@ -111,8 +111,8 @@ en la línea de comando.
 
 Si ingresa usado ``root``, su primera tarea será crear un usuario para
 ser usado en el trabajo cotidiano, ya que es considerada una mala
-práctica trabajar como ``root``. Particularmente, el servidor Odoo se
-rehusará a ejecutarse si está usando ``root``.
+práctica trabajar como ``root``. Particularmente, el servidor Odoo
+rehusará ejecutarse si está usando ``root``.
 
 Si está usando Ubuntu, probablemente no necesite esto ya que el proceso
 de instalación le habrá guiado en la creación de un usuario personal.
